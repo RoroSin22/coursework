@@ -40,3 +40,17 @@ float Cargo::getWeight() {
     return weight;
 }
 
+int typeToInt(std::string type){
+    if (type == "light"){
+        return 1;
+    }
+    if (type == "medium"){
+        return 2;
+    }
+    if (type == "heavy"){
+        return 3;
+    }
+    return 0;
+}
+
+

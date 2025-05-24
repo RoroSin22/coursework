@@ -23,5 +23,7 @@ public:
     std::vector<unsigned int> getExtraProperties();
 };
 
+int typeToInt(std::string type);
+
 
 #endif
