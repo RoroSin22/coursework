@@ -3,4 +3,6 @@ project(untitled6)
 
 set(CMAKE_CXX_STANDARD 23)
 
-add_executable(untitled6 main.cpp)
+add_executable(untitled6 main.cpp
+        cargo.cpp
+        cargo.h)
