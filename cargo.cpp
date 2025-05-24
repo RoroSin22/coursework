@@ -1,8 +1,9 @@
 #include "cargo.h"
 
 
-Cargo::Cargo(int id_, float weight_, std::vector<int> extra_properties_) {
+Cargo::Cargo(unsigned int id_, std::string name_, float weight_, std::vector<unsigned int> extra_properties_) {
     id = id_;
+    name = name_;
     weight = weight_;
     type = determineType();
     extra_properties = extra_properties_;
@@ -19,11 +20,15 @@ std::string Cargo::determineType() {
 
 }
 
-int Cargo::getId() {
+unsigned int Cargo::getId() {
     return id;
 }
 
-std::vector<int> Cargo::getExtraProperties() {
+std::string Cargo::getName() {
+    return name;
+}
+
+std::vector<unsigned int> Cargo::getExtraProperties() {
     return extra_properties;
 }
 

@@ -5,4 +5,6 @@ set(CMAKE_CXX_STANDARD 23)
 
 add_executable(untitled6 main.cpp
         cargo.cpp
-        cargo.h)
+        cargo.h
+        storage.cpp
+        storage.h)

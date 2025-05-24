@@ -7,18 +7,20 @@
 
 class Cargo {
 private:
-    int id;
+    unsigned int id;
+    std::string name;
     float weight;
     std::string type;
-    std::vector<int> extra_properties;
+    std::vector<unsigned int> extra_properties;
 
 public:
-    Cargo(int id_, float weight_, std::vector<int> extra_properties_);
+    Cargo(unsigned int id_, std::string name_, float weight_, std::vector<unsigned int> extra_properties_);
     std::string determineType();
-    int getId();
+    unsigned int getId();
+    std::string getName();
     float getWeight();
     std::string getType();
-    std::vector<int> getExtraProperties();
+    std::vector<unsigned int> getExtraProperties();
 };
 
 
