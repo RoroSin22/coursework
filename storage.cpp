@@ -18,6 +18,14 @@ void Shelf::removeCargo(unsigned int cargoId) {
     cargos.erase(cargos.begin() + cargoId);
 }
 
+unsigned int Shelf::getMaxPlaces() {
+    return maxPlaces;
+}
+
+unsigned int Shelf::getFreePlaces() {
+    return freePlaces;
+}
+
 std::shared_ptr<Cargo> Shelf::getCargo(unsigned int cargoId) {
     if (cargoId < maxPlaces - freePlaces) {
         return cargos[cargoId];
@@ -56,11 +64,32 @@ void Storage::loadData() {
                 addShelf(shelf);
             }
         } catch (nlohmann::json::parse_error& e) {
-            std::cerr << "Error JSON file parsing: " << e.what() <<
-                      std::endl;
+            std::cerr << "Error JSON file parsing: " << e.what() << std::endl;
             data = nlohmann::json{{"storage", nlohmann::json::array()}};
         }
     }
+}
+
+void Storage::saveData() {
+    nlohmann::json storageData;
+    storageData["storage"]["shelves"] = nlohmann::json::array();
+    for (auto& shelf : shelves){
+        nlohmann::json shelfData;
+        shelfData["maxPlaces"] = shelf.getMaxPlaces();
+        shelfData["freePlaces"] = shelf.getFreePlaces();
+        shelfData["cargos"] = nlohmann::json::array();
+        for (unsigned int i = 0; i < shelf.getMaxPlaces() - shelf.getFreePlaces(); i++){
+            nlohmann::json cargoData;
+            std::shared_ptr<Cargo> cargo = shelf.getCargo(i);
+            cargoData["type"] = typeToString(cargo->getType());
+            cargoData["name"] = cargo->getName();
+            cargoData["weight"] = cargo->getWeight();
+            cargoData["text"] = cargo->getText();
+            shelfData["cargos"].push_back(cargoData);
+        }
+        storageData["shelves"].push_back(shelfData);
+    }
+    std::ofstream("Storage.json") << storageData.dump(4);
 }
 
 void Shelf::print() {

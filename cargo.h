@@ -17,30 +17,40 @@ enum class CargoType {
 
 class Cargo{
 private:
+    CargoType type = CargoType::REGULAR;
     std::string name;
     float weight;
 public:
     Cargo(std::string name, float weight);
     std::string getName();
     float getWeight();
-    void print();
+    virtual CargoType getType();
+    virtual std::string getText();
+    virtual void print();
 };
 
 class FragileCargo: public Cargo{
 private:
+    CargoType type = CargoType::FRAGILE;
     std::string instruction;
 public:
     FragileCargo(std::string name, float weight, std::string instruction);
     std::string getInstruction();
+    CargoType getType() override;
+    std::string getText() override;
+    void print() override;
 };
 
 class PerishableCargo: public Cargo{
 private:
+    CargoType type = CargoType::PERISHABLE;
     std::string date;
     void validDate();
 public:
     PerishableCargo(std::string name, float weight, std::string instruction);
-    std::string getDate();
+    CargoType getType() override;
+    std::string getText() override;
+    void print() override;
 };
 
 class CargoFactory{
@@ -49,6 +59,7 @@ public:
 };
 
 CargoType stringToType(std::string s);
+std::string typeToString(CargoType t);
 
 
 

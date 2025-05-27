@@ -21,6 +21,8 @@ public:
     void addCargo(std::shared_ptr<Cargo> cargo);
     void removeCargo(unsigned int cargoId);
     std::shared_ptr<Cargo> getCargo(unsigned int cargoId);
+    unsigned int getMaxPlaces();
+    unsigned int getFreePlaces();
     void print();
 };
 
@@ -38,6 +40,7 @@ public:
     static Storage* getInstance();
     void print();
     void addShelf(Shelf shelf);
+    void saveData();
 };
 
 

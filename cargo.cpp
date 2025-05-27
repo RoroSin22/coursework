@@ -34,9 +34,28 @@ std::string Cargo::getName() {
     return name;
 }
 
+CargoType Cargo::getType() {
+    return type;
+}
+
+CargoType FragileCargo::getType() {
+    return type;
+}
+
+CargoType PerishableCargo::getType() {
+    return type;
+}
 
 float Cargo::getWeight() {
     return weight;
+}
+
+std::string Cargo::getText() {
+    return "";
+}
+
+void Cargo::print() {
+    std::cout << name << " " << weight << std::endl;
 }
 
 FragileCargo::FragileCargo(std::string name, float weight, std::string instruction):
@@ -46,14 +65,29 @@ std::string FragileCargo::getInstruction() {
     return instruction;
 }
 
+std::string FragileCargo::getText() {
+    return instruction;
+}
+
+void FragileCargo::print() {
+    Cargo::print();
+    std::cout << instruction << std::endl;
+}
+
 
 PerishableCargo::PerishableCargo(std::string name, float weight, std::string date):
     Cargo(name, weight), date(date) {
     validDate();
 }
 
-std::string PerishableCargo::getDate() {
+
+std::string PerishableCargo::getText() {
     return date;
+}
+
+void PerishableCargo::print() {
+    Cargo::print();
+    std::cout << date << std::endl;
 }
 
 void PerishableCargo::validDate() {
@@ -85,6 +119,3 @@ std::shared_ptr<Cargo> CargoFactory::createCargo(CargoType type, std::string nam
 }
 
 
-void Cargo::print() {
-    std::cout << name << " " << weight << std::endl;
-}

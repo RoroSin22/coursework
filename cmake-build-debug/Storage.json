@@ -1,29 +1,67 @@
 {
-    "storage":
-        {"shelves": [
-            {"maxPlaces": 10,
-                "freePlaces": 8,
-                "cargos": [
-                    {"type": "regular",
-                        "name": "shit",
-                        "weight": 1.9,
-                        "text": ""},
-                    {"type": "regular",
-                        "name": "other_shit",
-                        "weight": 3.1,
-                        "text": ""}
-                ]},
-            {"maxPlaces": 5,
-                "freePlaces": 3,
-                "cargos": [
-                    {"type": "fragile",
-                        "name": "same_shit",
-                        "weight": 3.23,
-                        "text": "fragile"},
-                    {"type": "perish",
-                        "name": "another_shit",
-                        "weight": 23.134,
-                        "text":  "21.03.19"}
-                ]}
-        ]}
+    "shelves": [
+        {
+            "cargos": [
+                {
+                    "name": "shit",
+                    "text": "",
+                    "type": "regular",
+                    "weight": 1.899999976158142
+                },
+                {
+                    "name": "other_shit",
+                    "text": "",
+                    "type": "regular",
+                    "weight": 3.0999999046325684
+                }
+            ],
+            "freePlaces": 8,
+            "maxPlaces": 10
+        },
+        {
+            "cargos": [
+                {
+                    "name": "same_shit",
+                    "text": "f",
+                    "type": "fragile",
+                    "weight": 3.2300000190734863
+                },
+                {
+                    "name": "another_shit",
+                    "text": "21.03.19",
+                    "type": "perish",
+                    "weight": 23.134000778198242
+                }
+            ],
+            "freePlaces": 3,
+            "maxPlaces": 5
+        },
+        {
+            "cargos": [
+                {
+                    "name": "name",
+                    "text": "22.10.23",
+                    "type": "perish",
+                    "weight": 23.100000381469727
+                }
+            ],
+            "freePlaces": 1,
+            "maxPlaces": 2
+        },
+        {
+            "cargos": [
+                {
+                    "name": "name2",
+                    "text": "23.10.05",
+                    "type": "perish",
+                    "weight": 12.130000114440918
+                }
+            ],
+            "freePlaces": 1,
+            "maxPlaces": 2
+        }
+    ],
+    "storage": {
+        "shelves": []
+    }
 }
