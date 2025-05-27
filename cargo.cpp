@@ -51,7 +51,7 @@ std::shared_ptr<Cargo> CargoFactory::createCargo(CargoType type, std::string nam
         case CargoType::FRAGILE:
             return std::make_shared<FragileCargo>(name, weight, specialProperty);
         case CargoType::PERISHABLE:
-            return std::make_shared<PerishableCargo>(name, weight, specialProperty); // Using specialProperty as date
+            return std::make_shared<PerishableCargo>(name, weight, specialProperty);
         default:
             throw std::invalid_argument("Invalid cargo type");
     }
