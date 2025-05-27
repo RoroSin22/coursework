@@ -3,6 +3,7 @@
 
 
 #include <string>
+#include <iostream>
 
 class Worker {
 private:
@@ -10,9 +11,10 @@ private:
     std::string surname;
 public:
     Worker(std::string name, std::string surname);
+    void print();
 };
 
-class Manager: Worker {
+class Manager: public Worker {
 private:
     std::string password;
 public:

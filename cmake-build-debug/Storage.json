@@ -60,8 +60,5 @@
             "freePlaces": 1,
             "maxPlaces": 2
         }
-    ],
-    "storage": {
-        "shelves": []
-    }
+    ]
 }

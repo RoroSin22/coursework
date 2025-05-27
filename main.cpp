@@ -1,11 +1,10 @@
 #include <iostream>
 #include "storage.h"
-
+#include "Ui.h"
 
 int main() {
-    Storage* s = Storage::getInstance();
-    s->print();
-s->saveData();
+    Ui u = Ui();
+    u.print();
 
     return 0;
 }

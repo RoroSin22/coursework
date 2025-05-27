@@ -1,0 +1,18 @@
+{
+  "workers": [
+    {"name": "Bog",
+      "surname": "Dan"
+    },
+    {"name": "Rez",
+      "surname": "Nik"
+    }
+  ],
+  "managers": [
+    {"name": "Alex",
+      "surname": "Andr",
+    "password": "aboba"},
+    {"name": "Bor",
+      "surname": "Chenko",
+    "password": "neaboba"}
+  ]
+}

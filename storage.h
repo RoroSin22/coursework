@@ -29,7 +29,6 @@ public:
 class Storage{
 private:
     static Storage* instance;
-    nlohmann::json data;
     std::vector<Shelf> shelves;
     void loadData();
     Storage();
