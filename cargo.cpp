@@ -2,12 +2,29 @@
 
 
 CargoType stringToType(std::string s){
-    if (s == "regular")
+    if (s == "regular") {
         return CargoType::REGULAR;
-    if (s == "fragiler")
+    }
+    if (s == "fragile") {
         return CargoType::FRAGILE;
-    if (s == "perish")
+    }
+    if (s == "perish"){
         return CargoType::PERISHABLE;
+    }
+    throw std::invalid_argument("Invalid cargo type");
+}
+
+std::string typeToString(CargoType t){
+    if (t == CargoType::REGULAR) {
+        return "regular";
+    }
+    if (t == CargoType::FRAGILE) {
+        return "fragile";
+    }
+    if (t == CargoType::PERISHABLE){
+        return "perish";
+    }
+    throw std::invalid_argument("Invalid string");
 }
 
 Cargo::Cargo(std::string name, float weight):

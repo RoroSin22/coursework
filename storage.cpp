@@ -48,8 +48,8 @@ void Storage::loadData() {
     } else {
         try {
             f >> data;
-            for (const auto& shelfData : data["shelves"]) {
-                Shelf shelf(shelfData["maxPlaces"].get<unsigned int>());
+            for (const auto& shelfData : data["storage"]["shelves"]) {
+                Shelf shelf = Shelf(shelfData["maxPlaces"].get<unsigned int>());
                 for (const auto& cargoData : shelfData["cargos"]){
                     shelf.addCargo(CargoFactory::createCargo(stringToType(cargoData["type"].get<std::string>()), cargoData["name"].get<std::string>(), cargoData["weight"].get<float>(), cargoData["text"].get<std::string>()));
                 }

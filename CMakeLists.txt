@@ -12,4 +12,6 @@ add_executable(untitled6 main.cpp
         Storage.json
         Worker.cpp
         Worker.h
+        Ui.cpp
+        Ui.h
 )
