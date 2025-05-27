@@ -6,6 +6,14 @@
 #include <vector>
 #include <memory>
 
+
+enum class CargoType {
+    REGULAR,
+    FRAGILE,
+    PERISHABLE
+};
+
+
 class Cargo{
 private:
     std::string name;
@@ -31,6 +39,11 @@ private:
 public:
     PerishableCargo(std::string name, float weight, std::string instruction);
     std::string getDate();
+};
+
+class CargoFactory{
+public:
+    static std::shared_ptr<Cargo> createCargo(CargoType type, std::string name, float weight, std::string specialProperty = "");
 };
 
 

@@ -43,3 +43,16 @@ void PerishableCargo::validDate() {
         throw std::invalid_argument("Invalid year format.");
     }
 }
+
+std::shared_ptr<Cargo> CargoFactory::createCargo(CargoType type, std::string name, float weight, std::string specialProperty) {
+    switch (type) {
+        case CargoType::REGULAR:
+            return std::make_shared<Cargo>(name, weight);
+        case CargoType::FRAGILE:
+            return std::make_shared<FragileCargo>(name, weight, specialProperty);
+        case CargoType::PERISHABLE:
+            return std::make_shared<PerishableCargo>(name, weight, specialProperty); // Using specialProperty as date
+        default:
+            throw std::invalid_argument("Invalid cargo type");
+    }
+}
