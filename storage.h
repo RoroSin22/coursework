@@ -34,11 +34,14 @@ private:
     Storage();
     Storage(const Storage&) = delete;
     Storage& operator=(const Storage&) = delete;
+    void addShelf(Shelf shelf);
 
 public:
     static Storage* getInstance();
     void print();
-    void addShelf(Shelf shelf);
+    void addShelf(unsigned int places);
+    bool addCargo(CargoType type, std::string name, float weight, std::string specialProperty = "");
+    bool removeCargo(std::string name);
     void saveData();
 };
 

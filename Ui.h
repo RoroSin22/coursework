@@ -5,9 +5,6 @@
 #include "Worker.h"
 #include "storage.h"
 
-class user : Worker{
-
-};
 
 class Ui {
 private:
@@ -22,8 +19,8 @@ public:
     void print();
     void saveData();
     void login();
-    void doStuffInStorage();
-    void addWorker(bool isManager, std::string name, std::string surname, std::string password = "");
+    void doStuffInStorage(unsigned int command);
+    void addWorker(bool status, std::string name, std::string surname, std::string password = "");
     void mainMenu();
 };
 

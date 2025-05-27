@@ -87,6 +87,36 @@ void Storage::saveData() {
     std::ofstream("Storage.json") << storageData.dump(4);
 }
 
+void Storage::addShelf(unsigned int places) {
+    shelves.push_back(Shelf(places));
+}
+
+bool Storage::addCargo(CargoType type, std::string name, float weight, std::string specialProperty) {
+    for (auto& shelf : shelves){
+        if(shelf.getFreePlaces() != 0){
+            shelf.addCargo(CargoFactory::createCargo(type, name, weight, specialProperty));
+            std::cout << "Cargo was added" << std::endl;
+            return true;
+        }
+    }
+    std::cerr << "No free places " << std::endl;
+    return false;
+}
+
+bool Storage::removeCargo(std::string name) {
+    for (auto& shelf : shelves){
+        for(unsigned int i = 0; i < shelf.getMaxPlaces() - shelf.getFreePlaces(); i++){
+            if (shelf.getCargo(i)->getName() == name){
+                shelf.removeCargo(i);
+                std::cout << "Cargo was removed" << std::endl;
+                return true;
+            }
+        }
+    }
+    std::cerr << "There is no such cargo" << std::endl;
+    return false;
+}
+
 void Shelf::print() {
     for(const auto& cargo : cargos){
         cargo->print();
