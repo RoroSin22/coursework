@@ -1,66 +1,45 @@
 #include "cargo.h"
 
 
-Cargo::Cargo(unsigned int id, std::string name, std::vector<unsigned int> extra_properties) :
-        id(id), name(name), extra_properties(extra_properties) {}
-
-
-unsigned int Cargo::getId() {
-    return id;
-}
+Cargo::Cargo(std::string name, float weight):
+    name(name), weight(weight) {}
 
 std::string Cargo::getName() {
     return name;
 }
 
-std::vector<unsigned int> Cargo::getExtraProperties() {
-    return extra_properties;
-}
-
-
-SmallCargo::SmallCargo(unsigned int id, std::string name, std::vector<unsigned int> extra_properties, float weight, std::string type) :
-        Cargo(id, name, extra_properties), weight(weight), type(type) {}
-
-std::string SmallCargo::getType() {
-    return type;
-}
-
-float SmallCargo::getWeight() {
+float Cargo::getWeight() {
     return weight;
 }
 
-int typeToInt(std::string type){
-    if (type == "light"){
-        return 1;
-    }
-    if (type == "medium"){
-        return 2;
-    }
-    if (type == "heavy"){
-        return 3;
-    }
-    return 0;
-}
+FragileCargo::FragileCargo(std::string name, float weight, std::string instruction):
+    Cargo(name, weight), instruction(instruction) {}
 
-std::string SmallCargo::determineType() {
-    if (weight < 10.0){
-        return "light";
-    }
-    if (weight > 50.0){
-        return "medium";
-    }
-    return "heavy";
-
-}
-
-LargeCargo::LargeCargo(unsigned int id, std::string name, std::vector<unsigned int> extra_properties, int size1, int size2) :
-        Cargo(id, name, extra_properties) {
-    size[0] = size1;
-    size[1] = size2;
-}
-
-int *LargeCargo::getSize() {
-    return size;
+std::string FragileCargo::getInstruction() {
+    return instruction;
 }
 
 
+PerishableCargo::PerishableCargo(std::string name, float weight, std::string date):
+    Cargo(name, weight), date(date) {
+    validDate();
+}
+
+std::string PerishableCargo::getDate() {
+    return date;
+}
+
+void PerishableCargo::validDate() {
+    if (date.length() < 8){
+        throw std::invalid_argument("Invalid date format.");
+    }
+    if ((!std::isdigit(date[0]) || !std::isdigit(date[1])) || ((date[0]+date[1] - 2 * '0') > 31)){
+        throw std::invalid_argument("Invalid day format.");
+    }
+    if ((!std::isdigit(date[3]) || !std::isdigit(date[4])) || ((date[3]+date[4] - 2 * '0') > 12)){
+        throw std::invalid_argument("Invalid month format.");
+    }
+    if ((!std::isdigit(date[6]) || !std::isdigit(date[7]))){
+        throw std::invalid_argument("Invalid year format.");
+    }
+}

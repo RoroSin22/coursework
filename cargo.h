@@ -4,40 +4,36 @@
 
 #include <string>
 #include <vector>
+#include <memory>
 
-class Cargo {
+class Cargo{
 private:
-    unsigned int id;
     std::string name;
-    std::vector<unsigned int> extra_properties;
-
-public:
-    Cargo(unsigned int id, std::string name, std::vector<unsigned int> extra_properties);
-    unsigned int getId();
-    std::string getName();
-    std::vector<unsigned int> getExtraProperties();
-};
-
-class SmallCargo: public Cargo{
-private:
     float weight;
-    std::string type;
 public:
-    SmallCargo(unsigned int id, std::string name, std::vector<unsigned int> extra_properties, float weight, std::string type);
+    Cargo(std::string name, float weight);
+    std::string getName();
     float getWeight();
-    std::string getType();
-    std::string determineType();
 };
 
-class LargeCargo: public Cargo{
+class FragileCargo: public Cargo{
 private:
-    int size[2];
+    std::string instruction;
 public:
-    LargeCargo(unsigned int id, std::string name, std::vector<unsigned int> extra_properties, int size1, int size2);
-    int* getSize();
+    FragileCargo(std::string name, float weight, std::string instruction);
+    std::string getInstruction();
 };
 
-int typeToInt(std::string type);
+class PerishableCargo: public Cargo{
+private:
+    std::string date;
+    void validDate();
+public:
+    PerishableCargo(std::string name, float weight, std::string instruction);
+    std::string getDate();
+};
+
+
 
 
 #endif
