@@ -29,6 +29,12 @@ Storage::Storage() {
     loadData();
 }
 
+Storage* Storage::getInstance() {
+    if (!instance) {
+        instance = new Storage();
+    }
+    return instance;
+}
 
 void Storage::addShelf(Shelf shelf) {
     shelves.push_back(shelf);
@@ -67,3 +73,6 @@ void Storage::print() {
         shelf.print();
     }
 }
+
+
+Storage* Storage::instance = nullptr;

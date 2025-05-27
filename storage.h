@@ -26,12 +26,16 @@ public:
 
 class Storage{
 private:
+    static Storage* instance;
     nlohmann::json data;
     std::vector<Shelf> shelves;
     void loadData();
+    Storage();
+    Storage(const Storage&) = delete;
+    Storage& operator=(const Storage&) = delete;
 
 public:
-    Storage();
+    static Storage* getInstance();
     void print();
     void addShelf(Shelf shelf);
 };
