@@ -5,6 +5,7 @@
 #include <string>
 #include <vector>
 #include <memory>
+#include <iostream>
 
 
 enum class CargoType {
@@ -22,6 +23,7 @@ public:
     Cargo(std::string name, float weight);
     std::string getName();
     float getWeight();
+    void print();
 };
 
 class FragileCargo: public Cargo{
@@ -46,6 +48,7 @@ public:
     static std::shared_ptr<Cargo> createCargo(CargoType type, std::string name, float weight, std::string specialProperty = "");
 };
 
+CargoType stringToType(std::string s);
 
 
 

@@ -1,12 +1,22 @@
 #include "cargo.h"
 
 
+CargoType stringToType(std::string s){
+    if (s == "regular")
+        return CargoType::REGULAR;
+    if (s == "fragiler")
+        return CargoType::FRAGILE;
+    if (s == "perish")
+        return CargoType::PERISHABLE;
+}
+
 Cargo::Cargo(std::string name, float weight):
     name(name), weight(weight) {}
 
 std::string Cargo::getName() {
     return name;
 }
+
 
 float Cargo::getWeight() {
     return weight;
@@ -55,4 +65,9 @@ std::shared_ptr<Cargo> CargoFactory::createCargo(CargoType type, std::string nam
         default:
             throw std::invalid_argument("Invalid cargo type");
     }
+}
+
+
+void Cargo::print() {
+    std::cout << name << " " << weight << std::endl;
 }

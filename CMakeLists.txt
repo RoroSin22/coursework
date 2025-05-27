@@ -7,4 +7,5 @@ add_executable(untitled6 main.cpp
         cargo.cpp
         cargo.h
         storage.cpp
-        storage.h)
+        storage.h
+        json.hpp)
