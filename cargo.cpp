@@ -1,24 +1,9 @@
 #include "cargo.h"
 
 
-Cargo::Cargo(unsigned int id_, std::string name_, float weight_, std::vector<unsigned int> extra_properties_) {
-    id = id_;
-    name = name_;
-    weight = weight_;
-    type = determineType();
-    extra_properties = extra_properties_;
-}
+Cargo::Cargo(unsigned int id, std::string name, std::vector<unsigned int> extra_properties) :
+        id(id), name(name), extra_properties(extra_properties) {}
 
-std::string Cargo::determineType() {
-    if (weight < 10.0){
-        return "light";
-    }
-    if (weight > 50.0){
-        return "medium";
-    }
-    return "heavy";
-
-}
 
 unsigned int Cargo::getId() {
     return id;
@@ -32,11 +17,15 @@ std::vector<unsigned int> Cargo::getExtraProperties() {
     return extra_properties;
 }
 
-std::string Cargo::getType() {
+
+SmallCargo::SmallCargo(unsigned int id, std::string name, std::vector<unsigned int> extra_properties, float weight, std::string type) :
+        Cargo(id, name, extra_properties), weight(weight), type(type) {}
+
+std::string SmallCargo::getType() {
     return type;
 }
 
-float Cargo::getWeight() {
+float SmallCargo::getWeight() {
     return weight;
 }
 
@@ -51,6 +40,27 @@ int typeToInt(std::string type){
         return 3;
     }
     return 0;
+}
+
+std::string SmallCargo::determineType() {
+    if (weight < 10.0){
+        return "light";
+    }
+    if (weight > 50.0){
+        return "medium";
+    }
+    return "heavy";
+
+}
+
+LargeCargo::LargeCargo(unsigned int id, std::string name, std::vector<unsigned int> extra_properties, int size1, int size2) :
+        Cargo(id, name, extra_properties) {
+    size[0] = size1;
+    size[1] = size2;
+}
+
+int *LargeCargo::getSize() {
+    return size;
 }
 
 
