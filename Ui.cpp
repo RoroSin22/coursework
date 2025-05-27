@@ -34,6 +34,8 @@ void Ui::saveData() {
         data["managers"].push_back(managerData);
     }
     std::ofstream("Workers.json") << data.dump(4);
+
+    storage->saveData();
 }
 
 void Ui::addWorker(bool status, std::string name, std::string surname, std::string password) {
@@ -50,7 +52,7 @@ void Ui::addWorker(bool status, std::string name, std::string surname, std::stri
 
 void Ui::login() {
     std::string answer;
-    std::cout << "Are you a manager?(yes/no)" << std::endl;
+    std::cout << "Are you a manager?" << std::endl;
     std::cin >> answer;
     std::string enteredName;
     std::cout << "Enter name:" << std::endl;
@@ -65,7 +67,7 @@ void Ui::login() {
                 std::cout << "Enter password:" << std::endl;
                 std::cin >> password;
                 if (manager.getPassword() == password){
-                    std::cout << "You are succesfully logged in:" << std::endl;
+                    std::cout << "You are succesfully logged in" << std::endl;
                     isLogged = true;
                     isManager= true;
                 }
@@ -75,7 +77,7 @@ void Ui::login() {
     } else{
         for (auto& worker : workerBase){
             if (worker.getName() == enteredName && worker.getSurname() == enteredSurname){
-                std::cout << "You are succesfully logged in:" << std::endl;
+                std::cout << "You are succesfully logged in" << std::endl;
                 isLogged = true;
                 break;
             }
@@ -92,6 +94,17 @@ Ui::Ui(){
     storage =  Storage::getInstance();
     isLogged = false;
     isManager = false;
+    mainMenu();
+}
+
+void Ui::allCommands(){
+    std::cout << "0 - show all storage data" << std::endl;
+    std::cout << "1 - show all commands" << std::endl;
+    std::cout << "2 - add new cargo" << std::endl;
+    std::cout << "3 - remove cargo" << std::endl;
+    std::cout << "4 - add new worker" << std::endl;
+    std::cout << "5 - add new shelf" << std::endl;
+    std::cout << "6 - exit the program" << std::endl;
 }
 
 void Ui::doStuffInStorage(unsigned int command) {
@@ -104,10 +117,7 @@ void Ui::doStuffInStorage(unsigned int command) {
                 break;
             }
             case 1:{
-                unsigned int places;
-                std::cout << "Enter how many places: " << std::endl;
-                std::cin >> places;
-                storage->addShelf(places);
+                allCommands();
                 break;
             }
             case 2:{
@@ -163,6 +173,38 @@ void Ui::doStuffInStorage(unsigned int command) {
                 addWorker(status, name, surname, password);
                 break;
             }
+            case 5:{
+                unsigned int places;
+                std::cout << "Enter how many places: " << std::endl;
+                std::cin >> places;
+                storage->addShelf(places);
+                break;
+            }
+        }
+    }
+}
+
+void Ui::mainMenu() {
+    while (true){
+        if(!isLogged){
+            std::cout << "Do you want to log in? " << std::endl;
+            std::string answer;
+            std::cin >> answer;
+            if (answer == "yes"){
+                login();
+            } else{
+                break;
+            }
+        }
+        std::cout << "Enter your command:" << std::endl;
+        std::cout << "To see all commands press 1" <<std::endl;
+        unsigned int command;
+        std::cin >> command;
+        if (command == 6){
+            saveData();
+            break;
+        } else if (command < 6){
+            doStuffInStorage(command);
         }
     }
 }

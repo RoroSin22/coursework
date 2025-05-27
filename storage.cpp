@@ -16,6 +16,7 @@ void Shelf::removeCargo(unsigned int cargoId) {
         throw std::invalid_argument("This place is free!");
     }
     cargos.erase(cargos.begin() + cargoId);
+    freePlaces++;
 }
 
 unsigned int Shelf::getMaxPlaces() {

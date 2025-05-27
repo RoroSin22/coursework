@@ -3,16 +3,16 @@
         {
             "cargos": [
                 {
-                    "name": "shit",
-                    "text": "",
-                    "type": "regular",
-                    "weight": 1.899999976158142
-                },
-                {
                     "name": "other_shit",
                     "text": "",
                     "type": "regular",
                     "weight": 3.0999999046325684
+                },
+                {
+                    "name": "anime",
+                    "text": "games",
+                    "type": "fragile",
+                    "weight": 213.1230010986328
                 }
             ],
             "freePlaces": 8,
@@ -49,15 +49,8 @@
             "maxPlaces": 2
         },
         {
-            "cargos": [
-                {
-                    "name": "name2",
-                    "text": "23.10.05",
-                    "type": "perish",
-                    "weight": 12.130000114440918
-                }
-            ],
-            "freePlaces": 1,
+            "cargos": [],
+            "freePlaces": 2,
             "maxPlaces": 2
         }
     ]

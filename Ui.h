@@ -19,6 +19,7 @@ public:
     void print();
     void saveData();
     void login();
+    void allCommands();
     void doStuffInStorage(unsigned int command);
     void addWorker(bool status, std::string name, std::string surname, std::string password = "");
     void mainMenu();
