@@ -44,12 +44,13 @@ void Storage::loadData() {
     std::ifstream f("Storage.json");
     if (f.peek() == std::ifstream::traits_type::eof()) {
         data = nlohmann::json{{"storage", nlohmann::json::array()}};
+        printf("ERROR JSON");
     } else {
         try {
             f >> data;
             for (const auto& shelfData : data["shelves"]) {
                 Shelf shelf(shelfData["maxPlaces"].get<unsigned int>());
-                for (const auto& cargoData : shelfData["departments"]){
+                for (const auto& cargoData : shelfData["cargos"]){
                     shelf.addCargo(CargoFactory::createCargo(stringToType(cargoData["type"].get<std::string>()), cargoData["name"].get<std::string>(), cargoData["weight"].get<float>(), cargoData["text"].get<std::string>()));
                 }
                 addShelf(shelf);
@@ -57,7 +58,7 @@ void Storage::loadData() {
         } catch (nlohmann::json::parse_error& e) {
             std::cerr << "Error JSON file parsing: " << e.what() <<
                       std::endl;
-            data = nlohmann::json{{"institutes", nlohmann::json::array()}};
+            data = nlohmann::json{{"storage", nlohmann::json::array()}};
         }
     }
 }

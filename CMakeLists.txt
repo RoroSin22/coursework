@@ -8,4 +8,8 @@ add_executable(untitled6 main.cpp
         cargo.h
         storage.cpp
         storage.h
-        json.hpp)
+        json.hpp
+        Storage.json
+        Worker.cpp
+        Worker.h
+)
