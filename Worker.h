@@ -11,6 +11,8 @@ private:
     std::string surname;
 public:
     Worker(std::string name, std::string surname);
+    std::string getName();
+    std::string getSurname();
     void print();
 };
 
@@ -19,6 +21,7 @@ private:
     std::string password;
 public:
     Manager(std::string name, std::string surname, std::string password);
+    std::string getPassword();
 };
 
 

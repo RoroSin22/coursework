@@ -16,6 +16,27 @@ void Ui::loadData() {
     }
 }
 
+void Ui::saveData() {
+    nlohmann::json data;
+    data["workers"] = nlohmann::json::array();
+    for (auto& worker : workerBase){
+        nlohmann::json workerData;
+        workerData["name"] = worker.getName();
+        workerData["surname"] = worker.getSurname();
+        data["workers"].push_back(workerData);
+    }
+    data["managers"] = nlohmann::json::array();
+    for (auto& manager : managerBase){
+        nlohmann::json managerData;
+        managerData["name"] = manager.getName();
+        managerData["surname"] = manager.getSurname();
+        managerData["password"] = manager.getPassword();
+        data["managers"].push_back(managerData);
+    }
+    std::ofstream("Workers.json") << data.dump(4);
+
+}
+
 Ui::Ui(){
     loadData();
     storage =  Storage::getInstance();

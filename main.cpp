@@ -5,6 +5,7 @@
 int main() {
     Ui u = Ui();
     u.print();
+    u.saveData();
 
     return 0;
 }
