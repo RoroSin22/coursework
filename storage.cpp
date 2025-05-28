@@ -5,18 +5,20 @@ Shelf::Shelf(unsigned int maxPlaces):
 
 void Shelf::addCargo(std::shared_ptr<Cargo> cargo) {
     if (freePlaces == 0){
-        throw std::invalid_argument("No free places!");
+        std::cerr << "No free places " << std::endl;
+    } else {
+        cargos.push_back(cargo);
+        freePlaces--;
     }
-    cargos.push_back(cargo);
-    freePlaces--;
 }
 
 void Shelf::removeCargo(unsigned int cargoId) {
     if(maxPlaces - freePlaces <= cargoId){
-        throw std::invalid_argument("This place is free!");
+        std::cerr << "This place is free " << std::endl;
+    } else {
+        cargos.erase(cargos.begin() + cargoId);
+        freePlaces++;
     }
-    cargos.erase(cargos.begin() + cargoId);
-    freePlaces++;
 }
 
 unsigned int Shelf::getMaxPlaces() {

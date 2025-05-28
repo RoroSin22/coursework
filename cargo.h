@@ -11,7 +11,8 @@
 enum class CargoType {
     REGULAR,
     FRAGILE,
-    PERISHABLE
+    PERISHABLE,
+    ERROR
 };
 
 
