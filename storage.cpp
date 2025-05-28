@@ -119,14 +119,17 @@ bool Storage::removeCargo(std::string name) {
 }
 
 void Shelf::print() {
-    for(const auto& cargo : cargos){
-        cargo->print();
+    for(unsigned int i = 0; i < cargos.size(); i++){
+        std::cout << "    Place #" << i << std::endl;
+        cargos[i]->print();
     }
 }
 
 void Storage::print() {
-    for (Shelf shelf : shelves){
-        shelf.print();
+    for (unsigned int i = 0; i < shelves.size(); i++){
+        std::cout << "Shelf #" << i << std::endl;
+        std::cout << "Free places = " << shelves[i].getFreePlaces() << " out of " << shelves[i].getMaxPlaces() << std::endl;
+        shelves[i].print();
     }
 }
 

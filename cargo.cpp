@@ -55,7 +55,7 @@ std::string Cargo::getText() {
 }
 
 void Cargo::print() {
-    std::cout << name << " " << weight << std::endl;
+    std::cout << "      Cargo name: " << name << "\n      Weight: " << weight << std::endl;
 }
 
 FragileCargo::FragileCargo(std::string name, float weight, std::string instruction):
@@ -71,7 +71,7 @@ std::string FragileCargo::getText() {
 
 void FragileCargo::print() {
     Cargo::print();
-    std::cout << instruction << std::endl;
+    std::cout << "      Instructions: " << instruction << std::endl;
 }
 
 
@@ -87,7 +87,7 @@ std::string PerishableCargo::getText() {
 
 void PerishableCargo::print() {
     Cargo::print();
-    std::cout << date << std::endl;
+    std::cout << "      Date of delay " << date << std::endl;
 }
 
 void PerishableCargo::validDate() {

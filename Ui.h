@@ -16,7 +16,6 @@ private:
 public:
     Ui();
     void loadData();
-    void print();
     void saveData();
     void login();
     void allCommands();

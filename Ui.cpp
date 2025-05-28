@@ -195,26 +195,17 @@ void Ui::mainMenu() {
             } else{
                 break;
             }
+        } else {
+            std::cout << "Enter your command:" << std::endl;
+            std::cout << "To see all commands press 1" << std::endl;
+            unsigned int command;
+            std::cin >> command;
+            if (command == 6) {
+                saveData();
+                break;
+            } else if (command < 6) {
+                doStuffInStorage(command);
+            }
         }
-        std::cout << "Enter your command:" << std::endl;
-        std::cout << "To see all commands press 1" <<std::endl;
-        unsigned int command;
-        std::cin >> command;
-        if (command == 6){
-            saveData();
-            break;
-        } else if (command < 6){
-            doStuffInStorage(command);
-        }
-    }
-}
-
-void Ui::print() {
-    storage->print();
-    for (auto& i : workerBase){
-        i.print();
-    }
-    for (auto& i : managerBase){
-        i.print();
     }
 }
