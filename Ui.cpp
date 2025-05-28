@@ -1,6 +1,33 @@
 #include "Ui.h"
 
-void Ui::loadData() {
+WorkerBase::WorkerBase() {
+    loadData();
+}
+
+WorkerBase *WorkerBase::getInstance() {
+    if (!instance) {
+        instance = new WorkerBase();
+    }
+    return instance;
+}
+
+void WorkerBase::addWorker(bool status, std::string name, std::string surname, std::string password) {
+    if (status){
+        managerBase.push_back(Manager(name, surname, password));
+    } else{
+        workerBase.push_back(Worker(name, surname));
+    }
+}
+
+std::vector<Worker> WorkerBase::getWorkers() {
+    return workerBase;
+}
+
+std::vector<Manager> WorkerBase::getManagers() {
+    return managerBase;
+}
+
+void WorkerBase::loadData() {
     std::ifstream f("Workers.json");
     nlohmann::json data;
     try {
@@ -16,7 +43,7 @@ void Ui::loadData() {
     }
 }
 
-void Ui::saveData() {
+void WorkerBase::saveData() {
     nlohmann::json data;
     data["workers"] = nlohmann::json::array();
     for (auto& worker : workerBase){
@@ -34,17 +61,17 @@ void Ui::saveData() {
         data["managers"].push_back(managerData);
     }
     std::ofstream("Workers.json") << data.dump(4);
+}
 
+
+void Ui::saveData() {
+    workerBase->saveData();
     storage->saveData();
 }
 
 void Ui::addWorker(bool status, std::string name, std::string surname, std::string password) {
     if (isManager){
-        if (status){
-            managerBase.push_back(Manager(name, surname, password));
-        } else{
-            workerBase.push_back(Worker(name, surname));
-        }
+        workerBase->addWorker(status, name, surname, password);
     }else{
         std::cerr << "Access denied" << std::endl;
     }
@@ -61,7 +88,7 @@ void Ui::login() {
     std::cout << "Enter surname:" << std::endl;
     std::cin >> enteredSurname;
     if (answer == "yes"){
-        for (auto& manager : managerBase){
+        for (auto& manager : workerBase->getManagers()){
             if (manager.getName() == enteredName && manager.getSurname() == enteredSurname){
                 std::string password;
                 std::cout << "Enter password:" << std::endl;
@@ -75,7 +102,7 @@ void Ui::login() {
             }
         }
     } else{
-        for (auto& worker : workerBase){
+        for (auto& worker : workerBase->getWorkers()){
             if (worker.getName() == enteredName && worker.getSurname() == enteredSurname){
                 std::cout << "You are succesfully logged in" << std::endl;
                 isLogged = true;
@@ -90,7 +117,7 @@ void Ui::login() {
 }
 
 Ui::Ui(){
-    loadData();
+    workerBase =WorkerBase::getInstance();
     storage =  Storage::getInstance();
     isLogged = false;
     isManager = false;
@@ -209,3 +236,5 @@ void Ui::mainMenu() {
         }
     }
 }
+
+WorkerBase* WorkerBase::instance = nullptr;
