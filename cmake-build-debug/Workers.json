@@ -1,24 +1,24 @@
 {
     "managers": [
         {
-            "name": "Alex",
-            "password": "aboba",
-            "surname": "Andr"
+            "name": "Bogdan",
+            "password": "password",
+            "surname": "Reznik"
         },
         {
-            "name": "Bor",
-            "password": "neaboba",
-            "surname": "Chenko"
+            "name": "Alex",
+            "password": "aboba",
+            "surname": "Borchenco"
         }
     ],
     "workers": [
         {
-            "name": "Bog",
-            "surname": "Dan"
+            "name": "Some",
+            "surname": "Guy"
         },
         {
-            "name": "Rez",
-            "surname": "Nik"
+            "name": "John",
+            "surname": "Dow"
         }
     ]
 }

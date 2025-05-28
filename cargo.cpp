@@ -87,7 +87,7 @@ std::string PerishableCargo::getText() {
 
 void PerishableCargo::print() {
     Cargo::print();
-    std::cout << "      Date of delay " << date << std::endl;
+    std::cout << "      Date of delay: " << date << std::endl;
 }
 
 void PerishableCargo::validDate() {

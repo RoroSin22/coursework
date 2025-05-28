@@ -3,16 +3,16 @@
         {
             "cargos": [
                 {
-                    "name": "other_shit",
+                    "name": "Coursework",
                     "text": "",
                     "type": "regular",
-                    "weight": 3.0999999046325684
+                    "weight": 69.0
                 },
                 {
-                    "name": "anime",
-                    "text": "games",
-                    "type": "fragile",
-                    "weight": 213.1230010986328
+                    "name": "Milk",
+                    "text": "31.05.25",
+                    "type": "perish",
+                    "weight": 5.1230010986328
                 }
             ],
             "freePlaces": 8,
@@ -21,14 +21,14 @@
         {
             "cargos": [
                 {
-                    "name": "same_shit",
-                    "text": "f",
+                    "name": "Paper",
+                    "text": "Waterfobic",
                     "type": "fragile",
                     "weight": 3.2300000190734863
                 },
                 {
-                    "name": "another_shit",
-                    "text": "21.03.19",
+                    "name": "Bananas",
+                    "text": "09.06.25",
                     "type": "perish",
                     "weight": 23.134000778198242
                 }
@@ -39,10 +39,10 @@
         {
             "cargos": [
                 {
-                    "name": "name",
-                    "text": "22.10.23",
-                    "type": "perish",
-                    "weight": 23.100000381469727
+                    "name": "Anvil",
+                    "text": "",
+                    "type": "regular",
+                    "weight": 231.100000381469727
                 }
             ],
             "freePlaces": 1,
@@ -50,8 +50,8 @@
         },
         {
             "cargos": [],
-            "freePlaces": 2,
-            "maxPlaces": 2
+            "freePlaces": 8,
+            "maxPlaces": 8
         }
     ]
 }
